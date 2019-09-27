@@ -11,8 +11,6 @@ typedef struct _Nodo {
 class Lista {
     private:
         Nodo *raiz = NULL;
-        Nodo *ultimo = NULL;
-
     public:
         Lista();
         void crear (int num);

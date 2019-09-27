@@ -6,38 +6,41 @@ Lista::Lista() {}
 
 void Lista::crear (int num) {
     Nodo *tmp;
+    Nodo *aux;
+    Nodo *aux2;
     
     tmp = new Nodo;
     tmp->num = num;
-    tmp->sig = NULL;
 
     if (this->raiz == NULL) { 
         this->raiz = tmp;
-        this->ultimo = this->raiz;
-    } else {
-        this->ultimo->sig = tmp;
-        this->ultimo = tmp;
+        tmp->sig = NULL;
+    }else {
+		aux = this->raiz;
+        while( aux != NULL ){
+			aux2 = aux->sig;
+			if(tmp->num <= aux->num){
+				tmp->sig = this->raiz;
+				this->raiz = tmp;
+				break;
+			}
+			else if(aux->num < tmp->num and aux2 == NULL){
+				aux->sig= tmp;
+				tmp->sig=NULL;
+				break;	
+			}
+			else if(aux->num < tmp->num and aux2->num > tmp->num){
+				aux->sig = tmp;
+				tmp->sig = aux2;
+				break;
+			}else{
+				aux = aux->sig;
+			}
+		}
     }
 }
 void Lista::imprimir () {  
 	Nodo *pivote = this->raiz;
-	Nodo *actual = NULL;
-	int aux = 0;
-	
-    while (pivote != NULL){
-		actual = pivote->sig;
-		while(actual != NULL){
-			if(pivote->num > actual->num ){
-				aux = pivote->num;
-				pivote->num = actual->num;
-				actual->num = aux;
-			}
-			actual = actual->sig;
-		}
-        pivote = pivote->sig;
-    }
-	
-	pivote = this->raiz;
     while (pivote != NULL) {
 		cout << pivote->num<< endl;
         

@@ -64,8 +64,10 @@ int main (void) {
 	cout << "Lista 2..."<<endl;
 	imprimirLista(q);
 	
+	//Aqui se concatena el siguente del ultimo nodo con la lista 2//
 	pLast->sig = q;
 	t=p;
+	
 	cout << "Lista 3 concatenada..."<<endl;
 	imprimirLista(t);
 	cout << "Lista 3 mezclada y ordenada..."<<endl;

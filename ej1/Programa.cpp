@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-#include "numEntero.h"
 #include "Lista.h"
 
 int main (void) {
@@ -13,7 +12,7 @@ int main (void) {
     while(stop != 'V'){
 		
 		cout << "Ingrese entero a la lista: ";cin >> num;	
-		lista->crear(new numEntero(num));
+		lista->crear(num);
 		lista->imprimir();
 		cout << "Para detener escriba V, seguir F: ";cin >> stop;
 	}

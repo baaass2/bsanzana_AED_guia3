@@ -1,11 +1,10 @@
 #include <iostream>
 using namespace std;
 #include "Lista.h"
-#include "numEntero.h"
 
 Lista::Lista() {}
 
-void Lista::crear (numEntero *num) {
+void Lista::crear (int num) {
     Nodo *tmp;
     
     tmp = new Nodo;
@@ -20,44 +19,29 @@ void Lista::crear (numEntero *num) {
         this->ultimo = tmp;
     }
 }
-
-int* Lista::ordenarArray(int* array, int DIM){
-	int temporal;
-	
-	for (int i = 0;i < DIM; i++){
-		for (int j = 0; j< DIM-1; j++){
-			if (array[j] > array[j+1]){
-			temporal = array[j]; 
-			array[j] = array[j+1]; 
-			array[j+1] = temporal;
-			}
-		}
-	}
-	return array;
-}
-
 void Lista::imprimir () {  
-
-    Nodo *tmp = this->raiz;
-    int *array;
-    int contador = 0;
-    int i = 0;
-    
-    while (tmp != NULL) {
-        contador = contador + 1;
-        tmp = tmp->sig;
+	Nodo *pivote = this->raiz;
+	Nodo *actual = NULL;
+	int aux = 0;
+	
+    while (pivote != NULL){
+		actual = pivote->sig;
+		while(actual != NULL){
+			if(pivote->num > actual->num ){
+				aux = pivote->num;
+				pivote->num = actual->num;
+				actual->num = aux;
+			}
+			actual = actual->sig;
+		}
+        pivote = pivote->sig;
     }
-    array = new int[contador];
-     
-    tmp = this->raiz;
-    while (tmp != NULL) {
-        array[i] = tmp->num->get_num();
-        tmp = tmp->sig;
-        i = i + 1;
+	
+	pivote = this->raiz;
+    while (pivote != NULL) {
+		cout << pivote->num<< endl;
+        
+        pivote = pivote->sig;
     }
-    array = ordenarArray(array, contador);
-    
-    for(int k=0; k<contador; k++){
-		cout << array[k] << endl;
-	}
 }
+

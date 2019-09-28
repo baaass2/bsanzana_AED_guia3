@@ -31,6 +31,26 @@ Nodo* ordenar(Nodo* pivote){
 	return q;
 }
 
+Nodo* mezcla(Nodo* p, Nodo* q){
+	
+	Nodo *t = NULL;
+	int aux = 0;
+	Lista *lista = new Lista();
+	
+	while(p != NULL){
+		t = lista->crear(p->num);
+		p = p->sig;
+	}
+	while(q != NULL){
+		t = lista->crear(q->num);
+		q = q->sig;
+	}
+	cout << "Lista 3 mezclada y ordenada por insercion..."<<endl;
+	imprimirLista(t);
+}
+
+
+
 int main (void) {
 
     Lista *lista = new Lista();
@@ -64,13 +84,16 @@ int main (void) {
 	cout << "Lista 2..."<<endl;
 	imprimirLista(q);
 	
+	// Aqui se crea una lista apartir de las otras 2.
+	mezcla(p, q);
+	
 	//Aqui se concatena el siguente del ultimo nodo con la lista 2//
 	pLast->sig = q;
 	t=p;
 	
 	cout << "Lista 3 concatenada..."<<endl;
 	imprimirLista(t);
-	cout << "Lista 3 mezclada y ordenada..."<<endl;
+	cout << "Lista 3 mezclada y ordenada con metodo burbuja..."<<endl;
 	t=ordenar(t);
 	imprimirLista(t);
 	

@@ -35,7 +35,7 @@ Nodo* Lista::crear (int num) {
 				break;	
 			}
 			//Si es un numero que debe ir entre medio de la lista
-			else if(aux->num < tmp->num and aux2->num > tmp->num){
+			else if(aux->num < tmp->num and aux2->num >= tmp->num){
 				aux->sig = tmp;
 				tmp->sig = aux2;
 				break;
@@ -66,17 +66,25 @@ Nodo* Lista::rellenar(int max){
 	tmp->sig = NULL;
 	
 	Nodo *raiz = this->raiz;
-	Nodo *tmp2 = raiz->sig;
+	Nodo *tmp2 = NULL;
 	int aux = (raiz->num)+1;
 	
-	tmp->num = aux;
-	if(tmp2->num != tmp->num){
-		raiz->sig = tmp;
-		tmp->sig = tmp2;
-		tmp2 = tmp;
-	}	
-	aux = aux +1;
+	
+	while(aux != max){
+		tmp2 = raiz->sig;
 		
+		Nodo *tmp = new Nodo();
+		tmp->sig = NULL;
+		tmp->num = aux;
+		
+		if(tmp2->num != tmp->num){
+			raiz->sig = tmp;
+			tmp->sig = tmp2;
+			tmp2 = tmp;
+		}	
+		aux = aux +1;
+		raiz = raiz->sig;
+	}
 	return this->raiz;
 }
 

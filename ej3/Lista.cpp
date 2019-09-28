@@ -69,7 +69,8 @@ Nodo* Lista::rellenar(int max){
 	Nodo *tmp2 = NULL;
 	int aux = (raiz->num)+1;
 	
-	
+	// El ciclo funciona hasta que aux llegue hasta el ultimo valor del nodo.
+	//El siguente fragmento es el que logra rellenar, se explica en el readme.
 	while(aux != max){
 		tmp2 = raiz->sig;
 		

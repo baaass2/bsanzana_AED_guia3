@@ -36,7 +36,7 @@ Nodo* Lista::crear (int num) {
 				break;	
 			}
 			//Si es un numero que debe ir entre medio de la lista
-			else if(aux->num < tmp->num and aux2->num > tmp->num){
+			else if(aux->num < tmp->num and aux2->num >= tmp->num){
 				aux->sig = tmp;
 				tmp->sig = aux2;
 				break;

@@ -29,7 +29,7 @@ void Lista::crear (int num) {
 				tmp->sig=NULL;
 				break;	
 			}
-			else if(aux->num < tmp->num and aux2->num > tmp->num){
+			else if(aux->num < tmp->num and aux2->num >= tmp->num){
 				aux->sig = tmp;
 				tmp->sig = aux2;
 				break;
